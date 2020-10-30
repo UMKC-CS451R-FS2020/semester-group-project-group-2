@@ -9,6 +9,11 @@ const usersRoute = require('./routes/users');
 const transactionRoute = require('./routes/transactions')
 const bodyParser = require('body-parser');
 
+mongoose.set('returnOriginal', false);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useUnifiedTopology', true);
+
 app.use(bodyParser.json());
 
 app.set('views', path.join(__dirname, 'views'));

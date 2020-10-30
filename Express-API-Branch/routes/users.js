@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../Models/User');
 const bodyParser = require('body-parser');
-const { Mongoose } = require('mongoose');
-const { findOne } = require('../Models/User');
 router.use(bodyParser.json());
 
 //Renders Signup Page on /users/signup
@@ -39,7 +37,7 @@ router.post('/signup', (req, res) => {
     const user = new User({
         username: req.body.username,
         password: req.body.password,
-        account: {}
+        account: req.body.account
     });
 
     //SAVES TO DB
@@ -56,6 +54,42 @@ router.post('/signup', (req, res) => {
 
 });
 
+router.route('/updateTransactionRuleOverAmount/:id/:amount').get((req, res) => {
+    User.findByIdAndUpdate({_id: req.params.id}, {"$set" :{"account.transactionRules.overAmount" : req.params.amount}}, {new: true})
+    .then(User=> res.json(User))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/updateTransactionRuleWithinState/:id/:state').get((req, res) => {
+    User.findByIdAndUpdate({_id: req.params.id}, {"$push" :{"account.transactionRules.withinState" : req.params.state}}, {new: true})
+    .then(User=> res.json(User))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/updateTransactionRuleatVendor/:id/:vendor').get((req, res) => {
+    User.findByIdAndUpdate({_id: req.params.id}, {"$push" :{"account.transactionRules.atVendor" : req.params.vendor}}, {new: true})
+    .then(User=> res.json(User))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/getTransactionRuleatVendor/:id').get((req, res) => {
+    User.findById({_id: req.params.id})
+    .then(User=> res.json(User.account.transactionRules.atVendor))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/getTransactionRules/:id').get((req, res) => {
+    User.findById({_id: req.params.id})
+    .then(User=> res.json(User.account.transactionRules))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/getTransactionRulesWithinState/:id').get((req, res) => {
+    User.findById({_id: req.params.id})
+    .then(User=> res.json(User.account.transactionRules.withinState))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 //RENDERS LOGIN.PUG PAGE AT /users/login
 router.get('/login', (req,res) => {
     res.render('login');
@@ -70,7 +104,7 @@ router.post('/login', (req, res) => {
             res.send('Username Not found');
         else
             if (obj.password === req.body.password)
-                res.render('userDashBoard', {message: req.body.username});
+                res.render('userDashBoard');
             else
                 res.send("Incorrect Password");
          });    

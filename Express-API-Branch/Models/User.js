@@ -1,20 +1,6 @@
 const mongoose = require('mongoose');
 
 
-const AccountSchema = mongoose.Schema( {
-    balance: 
-    {
-    type: Number,
-    default: 0,
-    required: true
-    },
-    
-
-   
-});
-
-
-
 const UserSchema = mongoose.Schema( {
     username: {
         type: String, 
@@ -25,7 +11,24 @@ const UserSchema = mongoose.Schema( {
         type: String,
         required: true
     },
-    account: [AccountSchema]
+    account: {
+        balance: {
+            type: Number,
+            default: 0,
+            required: true
+        },
+        transactionRules: {
+            overAmount: {
+                type: Number
+            },
+            withinState: {
+                type: [String]
+            },
+            atVendor: {
+                type: [String]
+            }
+        }
+    }
    
 });
 
