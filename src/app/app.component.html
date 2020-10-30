@@ -333,7 +333,7 @@
     </div>
   </div>
 
-
+ <app-home *ngIf="selection == 'Home'"></app-home>
  <app-notifyrules *ngIf="selection == 'Notifications'"></app-notifyrules>
  <app-transLog *ngIf="selection == 'Transactions'"></app-transLog>
  <app-make-trans *ngIf="selection == 'Transactions'"></app-make-trans>
