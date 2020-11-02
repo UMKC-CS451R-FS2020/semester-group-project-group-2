@@ -7,7 +7,8 @@ import {transLogComponent} from './transLog/transLog.component';
 import { MakeTransComponent } from './make-trans/make-trans.component';
 import { NotifyrulesComponent } from './notifyrules/notifyrules.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { TransactionComponent } from './transaction/transaction.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,8 @@ import { HomeComponent } from './home/home.component'
     MakeTransComponent,
     NotifyrulesComponent,
     NotificationsComponent,
-    HomeComponent
+    HomeComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
