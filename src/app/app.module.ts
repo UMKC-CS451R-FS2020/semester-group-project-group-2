@@ -29,6 +29,7 @@ import { TransactionComponent } from './transaction/transaction.component'
     MakeTransComponent,
     NotifyrulesComponent,
     NotificationsComponent,
-    HomeComponent]
+    HomeComponent,
+    TransactionComponent]
 })
 export class AppModule { }
