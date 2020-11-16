@@ -331,6 +331,10 @@
     <div class="card card-small" (click)="selection = 'Accounts'" tabindex="0">
       <span>Accounts</span>
     </div>
+    <div class="card card-small" (click)="selection = 'Login'" tabindex="0">
+      <span>Login</span>
+    </div>
+
   </div>
 
  <app-home *ngIf="selection == 'Home'"></app-home>
@@ -339,6 +343,7 @@
   <app-transaction *ngIf="selection == 'Transactions'"></app-transaction>
  <app-make-trans *ngIf="selection == 'Transactions'"></app-make-trans>
  <app-notifications *ngIf="selection == 'Notifications'"></app-notifications>
+  <app-login *ngIf="selection ==  'Login'"></app-login>
 
 
   <!-- Links -->
