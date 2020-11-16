@@ -1,0 +1,49 @@
+<div className="container">
+
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+  
+        <label>
+          Vendor:
+          <input type="text" formControlName="vendor">
+        </label>
+      
+        <label>
+          Transaction Amount:
+          <input type="number" formControlName="transactionAmount">
+        </label>
+    
+        <label>
+            Type of transaction:
+            <select class="custom-select" formControlName="typeOfTransaction">
+                <option value="" disabled></option>
+                <option>Deposit</option>
+                <option>Withdrawal</option>
+             </select>
+          </label>
+    
+          <label>
+            Description:
+            <input type="text" formControlName="description">
+          </label>
+
+          <label>
+              State:
+              <select class="custom-select" formControlName="state">
+                <option value="" disabled></option>
+                <option>Kansas</option>
+                <option>Nebraska</option>
+                <option>Texas</option>
+                <option>Arkansas</option>
+                <option>Florida</option>
+                <option>California</option>
+                <option>Alaska</option>
+                <option>Montana</option>
+             </select>
+          </label>
+          
+        <button type="submit" [disabled]="!transactionForm.valid">Submit</button>
+      
+      </form>
+
+</div>
+
