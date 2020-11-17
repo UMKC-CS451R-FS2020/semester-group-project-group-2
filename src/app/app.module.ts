@@ -12,22 +12,22 @@ import { HomeComponent } from './home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { LoginComponent } from './login/login.component'
 import {ReactiveFormsModule} from "@angular/forms";
-import { RegisterComponent } from './register/register.component';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    transLogComponent,
     MakeTransComponent,
     NotifyrulesComponent,
     NotificationsComponent,
     HomeComponent,
     TransactionComponent,
-    LoginComponent,
-    RegisterComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -40,7 +40,6 @@ import { RegisterComponent } from './register/register.component';
     NotificationsComponent,
     HomeComponent,
     TransactionComponent,
-    LoginComponent,
-    TransactionComponent]
+    LoginComponent]
 })
 export class AppModule { }
