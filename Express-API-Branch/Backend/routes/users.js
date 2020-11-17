@@ -25,13 +25,6 @@ router.use(express.urlencoded({
 
 router.post('/signup', (req, res) => {
 
-    //VALIDATE PASSWORD
-
-    if (!passWordValidator(req.body.password))
-    {
-     res.send('invalid password')
-     return false;
-    }
 
     //CREATE USER MODEL
     const user = new User({
@@ -107,10 +100,5 @@ router.post('/login', (req, res) => {
 
 
 //8 CHARACTERS, SPECIAL CHARACTER, NUMBER, LESS THAN 15 CHARACTERS
-function passWordValidator(pw)
-{
-   let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-   return re.exec(pw);
-}
 
 module.exports = router;

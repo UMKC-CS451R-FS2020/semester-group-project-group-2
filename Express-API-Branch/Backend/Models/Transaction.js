@@ -21,7 +21,7 @@ const TransactionSchema = mongoose.Schema( {
     username: {
         type: String
     },
-    location: {
+    state: {
         type: String
     },
     startingBalance: {

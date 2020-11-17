@@ -334,6 +334,10 @@
     <div class="card card-small" (click)="selection = 'Login'" tabindex="0">
       <span>Login</span>
     </div>
+    <div class="card card-small" (click)="selection = 'Register'" tabindex="0">
+      <span>Register</span>
+    </div>
+
 
   </div>
 
@@ -344,6 +348,7 @@
  <app-make-trans *ngIf="selection == 'Transactions'"></app-make-trans>
  <app-notifications *ngIf="selection == 'Notifications'"></app-notifications>
   <app-login *ngIf="selection ==  'Login'"></app-login>
+  <app-register *ngIf="selection ==  'Register'"></app-register>
 
 
   <!-- Links -->

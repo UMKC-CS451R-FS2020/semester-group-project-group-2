@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { LoginComponent } from './login/login.component'
 import {ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     NotificationsComponent,
     HomeComponent,
     TransactionComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     NotificationsComponent,
     HomeComponent,
     TransactionComponent,
-    LoginComponent]
+    LoginComponent,
+    TransactionComponent]
 })
 export class AppModule { }

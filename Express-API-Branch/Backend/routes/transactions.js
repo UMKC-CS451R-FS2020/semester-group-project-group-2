@@ -16,6 +16,7 @@ router.use(express.urlencoded({
   }))
 
 router.post('/newTransaction', (req, res) => {
+    console.log(req.body);
 
     const transaction = new Transaction({
         processingDate: Date.now(),
@@ -24,7 +25,7 @@ router.post('/newTransaction', (req, res) => {
         transactionAmount: req.body.transactionAmount,
         description: req.body.description,
         username: req.body.username,
-        location: req.body.location,
+        vendor: req.body.location,
         state: req.body.state,
         startingBalance: 0,
         endingBalance: 0

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
 
 @Component({
@@ -12,8 +12,8 @@ export class LoginComponent implements OnInit {
 
   }
   loginForm = new FormGroup( {
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   })
 
   readonly ROOT_URL = "http://localhost:3000/users/login"
