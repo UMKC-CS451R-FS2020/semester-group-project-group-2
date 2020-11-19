@@ -27,7 +27,5 @@ export class LoginComponent implements OnInit {
       (res) => console.log(res),
       (err) => console.log(err)
     )
-
   }
-
 }

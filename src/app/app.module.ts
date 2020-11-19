@@ -13,6 +13,18 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { LoginComponent } from './login/login.component'
 import {ReactiveFormsModule} from "@angular/forms";
 import { CommonModule } from '@angular/common';
+import { MatTableComponent } from './mat-table/mat-table.component';
+
+
+
+import { MatTableModule } from '@angular/material/table';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -23,7 +35,8 @@ import { CommonModule } from '@angular/common';
     NotificationsComponent,
     HomeComponent,
     TransactionComponent,
-    LoginComponent
+    LoginComponent,
+    MatTableComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +44,12 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent,
