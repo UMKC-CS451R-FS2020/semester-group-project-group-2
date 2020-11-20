@@ -333,8 +333,7 @@
 <div class="content" role="main">
 
 
-  <app-home *ngIf="selection == 'Home'"></app-home>
-
+  <app-home (newItemEvent)="onNotify($event)" *ngIf="selection == 'Home'" ></app-home>
   <app-notifyrules *ngIf="selection == 'Notifications'"></app-notifyrules>
   <app-notifications *ngIf="selection == 'Notifications'"></app-notifications>
   <app-transaction *ngIf="selection == 'Transactions'"></app-transaction>

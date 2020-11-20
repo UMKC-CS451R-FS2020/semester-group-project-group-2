@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -11,5 +11,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  onClickNav(value: string) {
+    this.newItemEvent.emit(value);
+  }
+
+
 
 }

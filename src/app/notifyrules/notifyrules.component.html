@@ -1,5 +1,6 @@
 <div>
-  <h2>Make New Notifications</h2>
+  <hr>
+  <h2>Make New Notifications Rule</h2>
 </div>
 <form [formGroup]="NotificationsForm" (ngSubmit)="onSubmit()">
   <table>
@@ -9,7 +10,7 @@
           <label for="ruleheader">Item</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
-            <select class="custom-select" id="state" formControlName="Item">
+            <select class="custom-select" id="Item" formControlName="Item">
               <option>Withdrawal</option>
               <option>Deposit</option>
               <option>Balance</option>
@@ -22,7 +23,7 @@
           <label for="ruleheader">Relation</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
-            <select class="custom-select" id="state" formControlName="Relation">
+            <select class="custom-select" id="Relation" formControlName="Relation">
               <option>Is Greater Than</option>
               <option>Is Less Than</option>
               <option>Equals</option>
@@ -43,4 +44,40 @@
     </tr>
   </table>
   <button type="submit" class="btn btn-success btn-block" [disabled]="!NotificationsForm.valid">Add Rule</button>
+</form>
+<hr>
+
+
+
+<form [formGroup]="NotificationsForm2" (ngSubmit)="onSubmit2()">
+  <table>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <input type="checkbox" name="notifyOutOfState" value="notifyOutOfState" formControlName="notifyOutOfState">
+          </div>
+        </div>
+      </td>
+      <td><label for="ruleheader">
+          <h5>Notify me of transactions out of state.</h5>
+        </label></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <input type="checkbox" name="notifyOverdraft" value="notifyOverdraft" formControlName="notifyOverdraft">
+          </div>
+        </div>
+      </td>
+      <td><label for="ruleheader">
+          <h5>Notify me when transaction causes overdraft.</h5>
+        </label></td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-success btn-block" [disabled]="!NotificationsForm2.valid">Submit</button>
+  <hr>
 </form>
