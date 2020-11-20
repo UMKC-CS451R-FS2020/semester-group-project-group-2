@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {transLogComponent} from './transLog/transLog.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient} from '@angular/common/http';
 import { MakeTransComponent } from './make-trans/make-trans.component';
@@ -53,7 +53,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   ],
   providers: [],
   bootstrap: [AppComponent,
-    transLogComponent,
+    
     MakeTransComponent,
     NotifyrulesComponent,
     NotificationsComponent,
