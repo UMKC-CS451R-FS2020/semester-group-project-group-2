@@ -10,6 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class MatTableComponent implements OnInit {
 
+  // test commit
+
   tableDataSrc: any;
   // tslint:disable-next-line: no-input-rename
   @Input('tableColumns') tableCols: string[];
