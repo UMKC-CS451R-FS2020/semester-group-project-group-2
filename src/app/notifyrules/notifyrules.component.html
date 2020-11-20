@@ -1,1 +1,46 @@
-<p>notifyrules works!</p>
+<div>
+  <h2>Make New Notifications</h2>
+</div>
+<form [formGroup]="NotificationsForm" (ngSubmit)="onSubmit()">
+  <table>
+    <tr>
+      <td>
+        <div class="form-group">
+          <label for="ruleheader">Item</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <select class="custom-select" id="state" formControlName="Item">
+              <option>Withdrawal</option>
+              <option>Deposit</option>
+              <option>Balance</option>
+            </select>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="ruleheader">Relation</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <select class="custom-select" id="state" formControlName="Relation">
+              <option>Is Greater Than</option>
+              <option>Is Less Than</option>
+              <option>Equals</option>
+            </select>
+          </div>
+        </div>
+      </td>
+      <td>$</td>
+      <td>
+        <div class="form-group">
+          <label for="ruleheader">Amount Dollars</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-description"> </i></span>
+            <input type="number" step="0.01" min="0" class="form-control" placeholder="0.00" formControlName="Amount">
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-success btn-block" [disabled]="!NotificationsForm.valid">Add Rule</button>
+</form>

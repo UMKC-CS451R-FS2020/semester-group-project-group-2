@@ -8,8 +8,8 @@ import { HttpClient} from '@angular/common/http';
   styleUrls: ['./make-trans.component.css']
 })
 export class MakeTransComponent implements OnInit {
-  constructor(private http: HttpClient) { 
-    
+  constructor(private http: HttpClient) {
+
   }
     transactionForm = new FormGroup( {
     vendor: new FormControl('', Validators.required),
@@ -20,7 +20,7 @@ export class MakeTransComponent implements OnInit {
   })
 
   readonly ROOT_URL = "http://localhost:3000/transactions/newTransaction"
-  
+
   ngOnInit(): void {
   }
 
@@ -37,13 +37,13 @@ export class MakeTransComponent implements OnInit {
     const transaction = {"location": this.transactionForm.value.vendor, "state": this.transactionForm.value.state, "typeOfTransaction": typeconv,
     "username": "Jumbo12", "description": this.transactionForm.value.description, "transactionAmount":this.transactionForm.value.transactionAmount};
     console.log(transaction);
-    this.http.post(this.ROOT_URL, transaction).subscribe( 
+    this.http.post(this.ROOT_URL, transaction).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     )
 
   }
-  
+
   get transactionAmount() {
     return this.transactionForm.get('transactionAmount');
   }
