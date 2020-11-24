@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "commerce-bank"
+    }
+  },
+  "defaultProject": "commerce-bank",
+  "cli": {
+    "analytics": false
+  }
 }

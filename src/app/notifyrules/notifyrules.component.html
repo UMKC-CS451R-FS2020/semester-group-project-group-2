@@ -1,0 +1,83 @@
+<div>
+  <hr>
+  <h2 style="text-align: center">Make New Notifications Rule</h2>
+</div>
+<form [formGroup]="NotificationsForm" (ngSubmit)="onSubmit()">
+  <table>
+    <tr>
+      <td>
+        <div class="form-group">
+          <label for="ruleheader">Item</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <select class="custom-select" id="Item" formControlName="Item">
+              <option>Withdrawal</option>
+              <option>Deposit</option>
+              <option>Balance</option>
+            </select>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="ruleheader">Relation</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <select class="custom-select" id="Relation" formControlName="Relation">
+              <option>Is Greater Than</option>
+              <option>Is Less Than</option>
+              <option>Equals</option>
+            </select>
+          </div>
+        </div>
+      </td>
+      <td>$</td>
+      <td>
+        <div class="form-group">
+          <label for="ruleheader">Amount Dollars</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-description"> </i></span>
+            <input type="number" step="0.01" min="0" class="form-control" placeholder="0.00" formControlName="Amount">
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-success btn-block" [disabled]="!NotificationsForm.valid">Add Rule</button>
+</form>
+<hr>
+
+
+
+<form [formGroup]="NotificationsForm2" (ngSubmit)="onSubmit2()">
+  <table>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <input type="checkbox" class="notifyCheckbox" name="notifyOutOfState" value="notifyOutOfState" formControlName="notifyOutOfState">
+          </div>
+        </div>
+      </td>
+      <td><label for="ruleheader">
+          <h5>Notify me of transactions out of state.</h5>
+        </label></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
+            <input type="checkbox" class="notifyCheckbox" name="notifyOverdraft" value="notifyOverdraft" formControlName="notifyOverdraft">
+          </div>
+        </div>
+      </td>
+      <td><label for="ruleheader">
+          <h5>Notify me when transaction causes overdraft.</h5>
+        </label></td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-success btn-block" [disabled]="!NotificationsForm2.valid">Submit</button>
+  <hr>
+</form>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'commerce-bank';
+<<<<<<< HEAD
+=======
+  selection = 'Home';
+
+  onNotify(message:string):void {
+    this.selection=message;
+  }
+>>>>>>> transactionComponent
 }
