@@ -1,17 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [
-    AppComponent
-=======
-=======
->>>>>>> Stashed changes
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient} from '@angular/common/http';
 import { MakeTransComponent } from './make-trans/make-trans.component';
@@ -56,22 +46,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NavbarComponent,
     ListTransactionsComponent,
     DashboardComponent
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   ],
   imports: [
     DemoMaterialModule,
     IconsModule,
     MatToolbarModule,
     BrowserModule,
-<<<<<<< Updated upstream
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-=======
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -98,6 +78,5 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     TransactionComponent,
     LoginComponent]
->>>>>>> Stashed changes
 })
 export class AppModule { }
