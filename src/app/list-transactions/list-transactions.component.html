@@ -2,7 +2,7 @@
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
+
     <!-- Position Column -->
     <ng-container matColumnDef="Date">
         <th mat-header-cell *matHeaderCellDef> Date </th>
@@ -12,19 +12,19 @@
       <th mat-header-cell *matHeaderCellDef> Description </th>
       <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
-  
+
     <!-- Name Column -->
     <ng-container matColumnDef="State">
       <th mat-header-cell *matHeaderCellDef> State </th>
       <td mat-cell *matCellDef="let element"> {{element.state}} </td>
-    </ng-container>ocation
-  
+    </ng-container>
+
     <!-- Weight Column -->
     <ng-container matColumnDef="Amount">
       <th mat-header-cell *matHeaderCellDef> Amount </th>
       <td mat-cell *matCellDef="let element"> {{element.transactionAmount}} </td>
     </ng-container>
-  
+
     <!-- Symbol Column -->
     <ng-container matColumnDef="Balance After">
       <th mat-header-cell *matHeaderCellDef> Balance After </th>
@@ -49,7 +49,7 @@
         <th mat-header-cell *matHeaderCellDef>Type</th>
         <td mat-cell *matCellDef="let element"> {{element.typeOfTransaction}} </td>
       </ng-container>
-  
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

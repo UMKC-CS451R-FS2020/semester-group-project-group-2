@@ -9,42 +9,47 @@ import { HttpClient} from '@angular/common/http';
 export class ListNotificationRulesComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  readonly HARD_CODED_URL = "http://localhost:3000/users/getNotificationRules/Jumbo12"
-  readonly HARD_CODED_REMOVE_URL = "http://localhost:3000/users/removeNotificationRule/Jumbo12"
-  
+  readonly HARD_CODED_URL = 'http://localhost:3000/users/getNotificationRules/Jumbo12';
+  readonly HARD_CODED_REMOVE_URL = 'http://localhost:3000/users/removeNotificationRule/Jumbo12';
+
+  editField: string;
+  notificationList: Array<any> = [
+
+  ];
+
   ngOnInit(){
     this.http.get(this.HARD_CODED_URL).subscribe(
       (res) => this.pushItems(res),
-      (err) => console.log("Error: " + err)
-    )
+      (err) => console.log('Error: ' + err)
+    );
   }
 
   pushItems(res)
   {
-    res.notificationRulesRelations.map(a => this.parseItemsRelations(a, this.notficationList));
-    this.parseItemsState(res.notificationRulesState,this.notficationList);
-    this.parseItemsTime(res.notificationRulesTimes, this.notficationList);
+    res.notificationRulesRelations.map(a => this.parseItemsRelations(a, this.notificationList));
+    this.parseItemsState(res.notificationRulesState, this.notificationList);
+    this.parseItemsTime(res.notificationRulesTimes, this.notificationList);
   }
 
   parseItemsState(obj, list)
   {
-    let a = {
+    const a = {
       id: 1,
-      Type: "State",
-      Relation: "Within",
+      Type: 'State',
+      Relation: 'Within',
       Amount: obj
-    }
+    };
     list.push(a);
   }
 
   parseItemsRelations(obj, list)
   {
-    let a = {
+    const a = {
       id: 1,
       Type: obj.typeItem,
       Relation: obj.overUnderSame,
       Amount: obj.transAmount
-    }
+    };
     list.push(a);
   }
 
@@ -53,65 +58,60 @@ export class ListNotificationRulesComponent implements OnInit {
     let timeString = '';
     if (obj.fromTime != undefined)
     {
-      timeString = obj.fromTime + " - " + obj.toTime;
+      timeString = obj.fromTime + ' - ' + obj.toTime;
     }
-    let a = {
+    const a = {
       id: 1,
-      Type: "Time",
-      Relation: "Within",
+      Type: 'Time',
+      Relation: 'Within',
       Amount: timeString
-    }
+    };
     list.push(a);
   }
-  
-  editField: string;
-  notficationList: Array<any> = [
-
-  ];
 
   updateList(id: number, property: string, event: any) {
     const editField = event.target.textContent;
-    this.notficationList[id][property] = editField;
+    this.notificationList[id][property] = editField;
   }
 
   remove(id: any) {
-    const obj= this.notficationList[id]
+    const obj = this.notificationList[id];
     let body = {
-  
-    }
-    if (obj.Type === "Withdrawal" || obj.Type === "Deposit")
+
+    };
+    if (obj.Type === 'Withdrawal' || obj.Type === 'Deposit')
     {
       body = {
-        amount : this.notficationList[id].Amount,
-        typeItem: this.notficationList[id].Type,
-        relation: this.notficationList[id].Relation
-      }
+        amount : this.notificationList[id].Amount,
+        typeItem: this.notificationList[id].Type,
+        relation: this.notificationList[id].Relation
+      };
     }
-    else if (obj.Type === "State")
+    else if (obj.Type === 'State')
     {
       body = {
-        typeItem : "State",
+        typeItem : 'State',
         amount: obj.Amount
-      }
+      };
     }
-    else if (obj.Type === "Time")
+    else if (obj.Type === 'Time')
     {
-      let firststring = obj.Amount.substr(0,4);
-      let secondstring = obj.Amount.substr(8,12);
-      let combined = {
+      const firststring = obj.Amount.substr(0, 4);
+      const secondstring = obj.Amount.substr(8, 12);
+      const combined = {
         fromTime: firststring, toTime: secondstring
-      }
+      };
       body = {
-        typeItem : "Time",
+        typeItem : 'Time',
         amount: combined
-      }
+      };
     }
-    
+
 
     this.http.put(this.HARD_CODED_REMOVE_URL, body).subscribe(
-      (res) => {console.log(res); this.notficationList.splice(id, 1);},
-      (err) => console.log("Error: " + err)
-    )
+      (res) => {console.log(res); this.notificationList.splice(id, 1); },
+      (err) => console.log('Error: ' + err)
+    );
 
   }
 

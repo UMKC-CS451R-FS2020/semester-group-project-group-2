@@ -17,33 +17,38 @@ export class MakeTransComponent implements OnInit {
     description: new FormControl('', Validators.required),
     state: new FormControl('', Validators.required),
     typeOfTransaction: new FormControl('', Validators.required)
-  })
+  });
 
-  readonly ROOT_URL = "http://localhost:3000/transactions/newTransaction"
+  readonly ROOT_URL = 'http://localhost:3000/transactions/newTransaction';
 
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line:typedef
   onSubmit() {
 
     let typeconv;
-    if (this.transactionForm.value.typeOfTransaction === "Deposit")
+    if (this.transactionForm.value.typeOfTransaction === 'Deposit')
     {
-      typeconv = "cr";
+      typeconv = 'cr';
     }
     else {
-      typeconv = "dr";
+      typeconv = 'dr';
     }
-    const transaction = {"location": this.transactionForm.value.vendor, "state": this.transactionForm.value.state, "typeOfTransaction": typeconv,
-    "username": "Jumbo12", "description": this.transactionForm.value.description, "transactionAmount":this.transactionForm.value.transactionAmount};
+    const transaction = {location: this.transactionForm.value.vendor,
+      state: this.transactionForm.value.state,
+      typeOfTransaction: typeconv,
+      username: 'Jumbo12', description: this.transactionForm.value.description,
+      transactionAmount: this.transactionForm.value.transactionAmount};
     console.log(transaction);
     this.http.post(this.ROOT_URL, transaction).subscribe(
-      (res) => {console.log(res), location.reload()},
+      (res) => {console.log(res), location.reload(); },
       (err) => console.log(err)
-    )
+    );
 
   }
 
+  // tslint:disable-next-line:typedef
   get transactionAmount() {
     return this.transactionForm.get('transactionAmount');
   }

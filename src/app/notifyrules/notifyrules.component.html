@@ -1,12 +1,12 @@
 <form [formGroup]="NotificationsForm" (ngSubmit)="onSubmit()">
-  <table>
+  <table style="margin: auto">
     <tr>
       <td>
         <div class="form-group">
           <label for="ruleheader">Item</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
-            <select class="custom-select" id="state" formControlName="Item">
+            <select class="custom-select" id="type" formControlName="Item">
               <option>Withdrawal</option>
               <option>Deposit</option>
               <option>Balance</option>
@@ -19,7 +19,7 @@
           <label for="ruleheader">Relation</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa dropNotification"> </i></span>
-            <select class="custom-select" id="state" formControlName="Relation">
+            <select class="custom-select" id="relation" formControlName="Relation">
               <option>Is Greater Than</option>
               <option>Is Less Than</option>
               <option>Equals</option>
@@ -27,19 +27,19 @@
           </div>
         </div>
       </td>
-      <td>$</td>
       <td>
         <div class="form-group">
-          <label for="ruleheader">Amount Dollars</label>
+          <label for="ruleheader">Amount (USD)</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-description"> </i></span>
-            <input type="number" step="0.01" min="0" class="form-control" placeholder="0.00" formControlName="Amount">
+            <input type="number" min="0" class="form-control" placeholder="0.00" formControlName="Amount">
           </div>
         </div>
       </td>
     </tr>
   </table>
   <button type="submit" class="btn btn-success btn-block" [disabled]="!NotificationsForm.valid">Add Rule</button>
+  <br><br>
 </form>
 
 <form [formGroup]="timePickerForm" (ngSubmit)="onTimeSubmit()">
@@ -56,11 +56,12 @@
     </div>
   </div>
   <button type="submit" class="btn btn-success btn-block" [disabled]="!timePickerForm.valid">Add Rule</button>
+  <br><br>
 </form>
 
 <form [formGroup]="statePickerForm" (ngSubmit)="onStateSubmit()">
   <div class="form-group row">
-    <label for="example-time-input" class="col-2 col-form-label">Transactions in: </label>
+    <label for="example-time-input" class="col-2 col-form-label">State: </label>
     <div class="col-10">
       <select class="custom-select" id="state" formControlName="StateSelect">
           <option value="AL">Alabama</option>
@@ -118,4 +119,5 @@
     </div>
   </div>
   <button type="submit" class="btn btn-success btn-block" [disabled]="!statePickerForm.valid">Add Rule</button>
+  <br><br>
 </form>

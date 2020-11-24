@@ -10,18 +10,17 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./notifyrules.component.css']
 })
 export class NotifyrulesComponent implements OnInit {
-  @Input()  name: string;
-  @Output() voted = new EventEmitter<boolean>();
-  didVote = false;
 
-  vote(agreed: boolean) {
-    this.voted.emit(agreed);
-    this.didVote = true;
-  }
-  
   constructor(private http: HttpClient) {
 
   }
+
+  get transactionNewRule() {
+    return this.NotificationsForm.get('Item');
+  }
+  @Input()  name: string;
+  @Output() voted = new EventEmitter<boolean>();
+  didVote = false;
     NotificationsForm = new FormGroup( {
     Item: new FormControl('', Validators.required),
     Relation: new FormControl('', Validators.required),
@@ -36,51 +35,52 @@ export class NotifyrulesComponent implements OnInit {
     statePickerForm = new FormGroup ( {
       StateSelect: new FormControl('', Validators.required),
     });
-  
- 
-  readonly ROOT_URL = "http://localhost:3000/transactions/"
+
+
+  readonly ROOT_URL = 'http://localhost:3000/transactions/';
+
+  vote(agreed: boolean) {
+    this.voted.emit(agreed);
+    this.didVote = true;
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    const newRule = {"typeItem": this.NotificationsForm.value.Item, "Relation": this.NotificationsForm.value.Relation, "Amount":  this.NotificationsForm.value.Amount};
-    this.http.post(this.ROOT_URL + "newRule", newRule).subscribe(
+    const newRule = {typeItem: this.NotificationsForm.value.Item, Relation:
+                     this.NotificationsForm.value.Relation, Amount:
+                     this.NotificationsForm.value.Amount};
+    this.http.post(this.ROOT_URL + 'newRule', newRule).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
-    )
+    );
     location.reload();
   }
 
   onTimeSubmit() {
     console.log (this.timePickerForm.value);
     const newRule = {
-      "fromTime" : this.timePickerForm.value.FromTime,
-      "toTime" : this.timePickerForm.value.ToTime,
-    }
-    this.http.post(this.ROOT_URL + "newRuleTime", newRule).subscribe(
+      fromTime : this.timePickerForm.value.FromTime,
+      toTime : this.timePickerForm.value.ToTime,
+    };
+    this.http.post(this.ROOT_URL + 'newRuleTime', newRule).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
-    )
+    );
     location.reload();
   }
 
   onStateSubmit() {
     console.log(this.statePickerForm.value.StateSelect);
     const newRule = {
-      "withinStateRule": this.statePickerForm.value.StateSelect
-    }
+      withinStateRule: this.statePickerForm.value.StateSelect
+    };
 
-    this.http.post(this.ROOT_URL + "newRuleState", newRule).subscribe(
+    this.http.post(this.ROOT_URL + 'newRuleState', newRule).subscribe(
       (res) => console.log(res),
-      (err) => console.log("Error: " + err)
-    )
+      (err) => console.log('Error: ' + err)
+    );
     location.reload();
-  }
-
-  
-
-  get transactionNewRule() {
-    return this.NotificationsForm.get('Item');
   }
 }
