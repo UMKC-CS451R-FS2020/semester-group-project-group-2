@@ -30,7 +30,7 @@
             <p class="card-text">With our new online service, you can now check your banking history with us. Anywhere you are, we're there with you.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Go to your account</a>
+            <button type="button" name="button" (click)="onClickNav('Transactions')" class="btn btn-primary">Your Account</button>
           </div>
         </div>
       </div>
@@ -43,8 +43,8 @@
             <p class="card-text">Now you can choose how you'd like to be notified. Click down below, or on the notification settings tab, to set certain rules for your transaction history. We'll notify you when those rules have been triggered.</p>
           </div>
           <div class="card-footer">
-            <button type="button" name="button" (click)="onClickNav('Notifications')" class="btn btn-primary">Set My Notifications</button>
-            
+            <button type="button" name="button" (click)="onClickNav('Notifications')" class="btn btn-primary">Notifications</button>
+
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
             <p class="card-text">Have questions about our new website or about any of your accounts with us? Contact us below!</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Contact Us</a>
+            <button type="button" name="button" (click)="onClickNav('Contact')" class="btn btn-primary">Contact Us</button>
           </div>
         </div>
       </div>
