@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +17,8 @@
     "mongoose": "^5.10.9",
     "nodemon": "^2.0.5",
     "pug": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1"
   }
 }
