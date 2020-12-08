@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,6 +11,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  contactAlert() {
+    alert('Contact us at: 1 (800) 453-2265');
   }
 
 }
