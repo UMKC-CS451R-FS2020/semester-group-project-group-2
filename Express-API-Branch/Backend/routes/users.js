@@ -71,7 +71,7 @@ router.route('/getTransactionRulesWithinState/:id').get((req, res) => {
 router.route('/getNotificationRules/:username').get((req, res) => {
 
     let total = (user) => {
-        
+
         let notificationRulesRelations = user.account.notificationRules;
         let notificationRulesTimes = user.account.betweenTimeRule;
         let notificationRulesState = user.account.withinStateRule;
@@ -86,12 +86,12 @@ router.route('/getNotificationRules/:username').get((req, res) => {
     .then(User => res.json(total(User)))
     .catch(err => res.status(400).json('Error: ' + err));
 
-  
+
 });
 
 
 router.route('/removeNotificationRule/:username').put((req, res) => {
-    if (req.body.typeItem === "Deposit" || req.body.typeItem === "Withdrawal")
+    if (req.body.typeItem === "Deposit" || req.body.typeItem === "Withdrawal" || req.body.typeItem === "Balance")
     {
         console.log("Apple");
         User.findOneAndUpdate({username: req.params.username},
@@ -127,11 +127,10 @@ router.route('/removeNotificationRule/:username').put((req, res) => {
             .then(User => res.json(User))
             .catch(err => res.status(400).json('Error: ' + err));
     }
-     
 });
 
 /**
- * 
+ *
  */
 
 //LOGIN VERIFICATION

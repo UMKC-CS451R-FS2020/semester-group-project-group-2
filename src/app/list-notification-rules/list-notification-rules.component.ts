@@ -36,7 +36,7 @@ export class ListNotificationRulesComponent implements OnInit {
     const a = {
       id: 1,
       Type: 'State',
-      Relation: 'Within',
+      Relation: 'Outside of',
       Amount: obj
     };
     list.push(a);
@@ -79,12 +79,12 @@ export class ListNotificationRulesComponent implements OnInit {
     let body = {
 
     };
-    if (obj.Type === 'Withdrawal' || obj.Type === 'Deposit')
+    if (obj.Type === 'Withdrawal' || obj.Type === 'Deposit' || obj.Type === 'Balance')
     {
       body = {
         amount : this.notificationList[id].Amount,
-        typeItem: this.notificationList[id].Type,
-        relation: this.notificationList[id].Relation
+        typeItem : this.notificationList[id].Type,
+        relation : this.notificationList[id].Relation
       };
     }
     else if (obj.Type === 'State')

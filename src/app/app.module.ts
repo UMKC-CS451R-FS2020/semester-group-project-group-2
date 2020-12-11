@@ -11,7 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import {Angular2Csv} from 'angular2-csv';
+
+import { MatButtonModule} from '@angular/material/button';
+import { MatDialogModule  } from '@angular/material/dialog';
+
 
 import {ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -29,6 +32,7 @@ import {DemoMaterialModule} from './material-module';
 import { FormsModule } from '@angular/forms';
 import { ListTransactionsComponent } from './list-transactions/list-transactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 
@@ -55,7 +59,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -63,6 +66,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatButtonModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -79,6 +84,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NotificationsComponent,
     HomeComponent,
     TransactionComponent,
-    LoginComponent]
+    LoginComponent
+  ]
 })
 export class AppModule { }
