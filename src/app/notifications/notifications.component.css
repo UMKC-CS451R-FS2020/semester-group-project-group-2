@@ -1,4 +1,8 @@
 button {
-    width: 25% !important;
-    margin: auto !important;
+  width: 25% !important;
+  margin: auto !important;
+}
+
+table {
+  width: 100%;
 }
