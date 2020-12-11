@@ -136,9 +136,9 @@ function updateRulesBroken(rules, id, transaction)
             }
             notificationRulesBroken.push(notificationRuleBroken)
         }
-       
+
     })
- 
+
     console.log('```````````DATA`````````````');
     console.log(notificationRulesBroken);
     Transaction.findByIdAndUpdate({_id: id}, {"$set" : {"transactionRulesBroken" : notificationRulesBroken}})
@@ -235,19 +235,19 @@ function checkRules(transaction, myusername, amount, res, vendor, id){
                         }
                         notificationRulesBroken.push(ruleBroken);
                     }
-                   
+
                 }
 
             }
 
-            if (User.account.withinStateRule != transaction.state)
+            if (User.account.withinStateRule != transaction.state && User.account.withinStateRule != null )
             {
                 console.log("State rule broken");
                 let ruleBroken = {
                     relation: "Out of state",
                     typeItem: transaction.state,
                     currentState: User.account.withinStateRule,
-                    
+
 
                 }
                 notificationRulesBroken.push(ruleBroken);
@@ -273,7 +273,7 @@ function checkRules(transaction, myusername, amount, res, vendor, id){
                     }
             }
 
-     
+
             notificationRulesBroken.map(data => console.log(data));
 
             if (notificationRulesBroken.length === 0)
@@ -284,7 +284,7 @@ function checkRules(transaction, myusername, amount, res, vendor, id){
                 updateRulesBroken(notificationRulesBroken, id, transaction);
                 res.json("Haha");
             }
-           
+
 
         })
 

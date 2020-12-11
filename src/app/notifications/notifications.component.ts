@@ -11,6 +11,7 @@ import { Angular2Csv } from 'angular2-csv';
 export class NotificationsComponent implements OnInit {
   dataSource;
   displayedColumns: string[] = [
+    'Rules Broken',
     'Date',
     'Description',
     'State',
@@ -18,7 +19,6 @@ export class NotificationsComponent implements OnInit {
     'Balance After',
     'Balance Before',
     'Vendor',
-    'Rules Broken',
     'Type',
   ];
   options: {
@@ -32,23 +32,55 @@ export class NotificationsComponent implements OnInit {
 
   readonly ROOT_URL = 'http://localhost:3000/users/getNotificationRules/';
   readonly HARD_CODED_NAME = 'Jumbo12';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
 
   ngOnInit(): void {
-    this.http
-      .get<any>(
-        'http://localhost:3000/transactions/getTransactions/' + 'Jumbo12'
-      )
-      .subscribe((data) => {
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource.filteredData.reverse();
-        // test comment, TODO: delete comment
-      });
+    this.http.get<any>('http://localhost:3000/transactions/getTransactions/' + 'Jumbo12').subscribe(data => {
+      let cleanData= [];
+      for (let el in data) {
+        if (data[el].transactionRulesBroken.length != 0 ){
+          cleanData.push(data[el]);
+        }
+      }
+      console.log("old data" + data);
+      console.log("new Data:" + cleanData);
+      this.dataSource = new MatTableDataSource(cleanData);
+      console.log(this.dataSource);
+
+      //this.datasource._data._value = this.datasource._data._value.filter(ar => ar.length > 0);
+      //console.log(this.dataSource);
+
+
+      //this.dataSource._data._value = this.dataSource._data._value
+      this.dataSource.filteredData.reverse();
+      //console.log(this.dataSource._data._value);
+      this.dataSource._data._value.map(num => {
+        if (num.transactionRulesBroken.length != 0) {
+          let output = "";
+          console.log("num.transactionRulesBroken is: " + num.transactionRulesBroken);
+          for (let el in num.transactionRulesBroken) {
+            console.log("el has: " + num.transactionRulesBroken[el]);
+            output += num.transactionRulesBroken[el].typeItem + " " + num.transactionRulesBroken[el].relation + " " + num.transactionRulesBroken[el].limit + "\n";
+          }
+          num.transactionRulesBroken = output;
+        }
+      }
+      );
+      // test comment, TODO: delete comment
+      //console.log(this.dataSource._data._value);
+    });
   }
+
+
+
 
   onVoted(agreed: boolean) {
     this.ngOnInit;
   }
+
+
+
 
   downloadFile() {
     this.http.get<any>(this.ROOT_URL + 'Jumbo12').subscribe((data) => {

@@ -35,14 +35,16 @@ export class ListTransactionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<any>(this.ROOT_URL + 'Jumbo12').subscribe(data => {
-      
+
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.filteredData.reverse();
       //console.log(this.dataSource._data._value);
       this.dataSource._data._value.map(num => {
         if (num.transactionRulesBroken.length != 0)
         {
-          num.transactionRulesBroken = JSON.stringify(num.transactionRulesBroken);
+          num.transactionRulesBroken = "yes" ;
+        } else{
+          num.transactionRulesBroken = "no" ;
         }
 
       }
@@ -61,4 +63,3 @@ export class ListTransactionsComponent implements OnInit {
     });
   }
 }
-
