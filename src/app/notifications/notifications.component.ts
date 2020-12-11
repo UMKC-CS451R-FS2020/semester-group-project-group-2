@@ -43,7 +43,6 @@ export class NotificationsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.filteredData.reverse();
         // test comment, TODO: delete comment
-        console.log(this.dataSource._data._value);
       });
   }
 

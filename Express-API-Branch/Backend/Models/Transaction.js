@@ -1,5 +1,20 @@
 const mongoose = require('mongoose');
 
+const NotificationRulesBrokenSchema = mongoose.Schema ({
+    notificationRules: {
+        relation: {
+            type: String
+        },
+        typeItem: {
+            type: String
+        },
+        limit: {
+            type: Number
+        },
+    }
+
+
+})
 
 const TransactionSchema = mongoose.Schema( {
     processingDate: {
@@ -31,7 +46,7 @@ const TransactionSchema = mongoose.Schema( {
         type: Number
     },
     transactionRulesBroken: {
-        type: String
+        type: [NotificationRulesBrokenSchema.notificationRules]
     },
     vendor: {
         type: String

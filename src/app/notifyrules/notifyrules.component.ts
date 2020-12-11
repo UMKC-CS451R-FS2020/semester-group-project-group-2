@@ -55,7 +55,6 @@ export class NotifyrulesComponent implements OnInit {
       (res) => console.log(res),
       (err) => console.log(err)
     );
-    location.reload();
   }
 
   onTimeSubmit() {
@@ -68,7 +67,6 @@ export class NotifyrulesComponent implements OnInit {
       (res) => console.log(res),
       (err) => console.log(err)
     );
-    location.reload();
   }
 
   onStateSubmit() {
@@ -81,6 +79,5 @@ export class NotifyrulesComponent implements OnInit {
       (res) => console.log(res),
       (err) => console.log('Error: ' + err)
     );
-    location.reload();
   }
 }
