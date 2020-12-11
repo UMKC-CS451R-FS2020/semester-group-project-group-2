@@ -9,10 +9,11 @@ import { NotifyrulesComponent } from './notifyrules/notifyrules.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
-import { LoginComponent } from './login/login.component'
-import { RegisterComponent } from './register/register.component'
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {Angular2Csv} from 'angular2-csv';
 
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatTableComponent } from './mat-table/mat-table.component';
 import { MatTableModule } from '@angular/material/table';
@@ -24,7 +25,7 @@ import { ListNotificationRulesComponent } from './list-notification-rules/list-n
 import { IconsModule } from 'angular-bootstrap-md';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {DemoMaterialModule} from '../app/material-module';
+import {DemoMaterialModule} from './material-module';
 import { FormsModule } from '@angular/forms';
 import { ListTransactionsComponent } from './list-transactions/list-transactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -70,8 +71,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent,
+  providers: [/*Angular2Csv*/],
+  bootstrap: [
+    AppComponent,
     MakeTransComponent,
     NotifyrulesComponent,
     NotificationsComponent,
