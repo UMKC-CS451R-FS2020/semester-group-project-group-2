@@ -43,24 +43,14 @@ export class NotificationsComponent implements OnInit {
           cleanData.push(data[el]);
         }
       }
-      console.log("old data" + data);
-      console.log("new Data:" + cleanData);
+
       this.dataSource = new MatTableDataSource(cleanData);
-      console.log(this.dataSource);
-
-      //this.datasource._data._value = this.datasource._data._value.filter(ar => ar.length > 0);
-      //console.log(this.dataSource);
-
-
-      //this.dataSource._data._value = this.dataSource._data._value
       this.dataSource.filteredData.reverse();
       //console.log(this.dataSource._data._value);
       this.dataSource._data._value.map(num => {
         if (num.transactionRulesBroken.length != 0) {
           let output = "";
-          console.log("num.transactionRulesBroken is: " + num.transactionRulesBroken);
           for (let el in num.transactionRulesBroken) {
-            console.log("el has: " + num.transactionRulesBroken[el]);
             output += num.transactionRulesBroken[el].typeItem + " " + num.transactionRulesBroken[el].relation + " " + num.transactionRulesBroken[el].limit + "\n";
           }
           num.transactionRulesBroken = output;
